@@ -13,9 +13,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import nik.oe.hu.model.AppDatabase;
+import nik.oe.hu.model.Product;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private AppDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        database = AppDatabase.getAppDatabase(getApplicationContext());
+        for (Product prod: createFakeInstances()
+             ) {
+            database.productDAO().Insert(prod);
+        }
     }
 
     @Override
@@ -97,6 +109,21 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private List<Product> createFakeInstances(){
+        ArrayList<Product> prod = new ArrayList<>();
+
+        Product prod1 = new Product();
+        prod1.setName("Kifli");
+        prod1.setDescription("Inycsiklandó péksütemény");
+        prod1.setBarcode("*268*");
+        prod1.setAmount(100);
+        prod1.setPrice(15);
+        prod1.setImage_url("https://secure.ce-tescoassets.com/assets/HU/955/211955/ShotType1_328x328.jpg");
+        prod.add(prod1);
+
+        return prod;
     }
 }
 
