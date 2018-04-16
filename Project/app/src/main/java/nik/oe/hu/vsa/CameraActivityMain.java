@@ -25,7 +25,6 @@ public class CameraActivityMain extends Activity {
     {
         Intent intent = new Intent(this,ScanBarcodeActivity.class);
         startActivityForResult(intent,0);
-
     }
 
     @Override
@@ -42,9 +41,7 @@ public class CameraActivityMain extends Activity {
                     {
                         barcodeResult.setText("No barcode found");
                     }
-
             }
-
         }
         else
         {

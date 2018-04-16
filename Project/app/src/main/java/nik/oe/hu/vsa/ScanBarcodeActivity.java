@@ -43,6 +43,7 @@ public class ScanBarcodeActivity extends Activity {
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
                 if (ActivityCompat.checkSelfPermission(ScanBarcodeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
+
                     //    ActivityCompat#requestPermissions
                     // here to request the missing permissions, and then overriding
                     //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -81,9 +82,10 @@ final SparseArray<Barcode> barcodes=detections.getDetectedItems();
 if(barcodes.size()>0)
 {
     Intent intent=new Intent();
-    intent.putExtra("barcode",barcodes.valueAt(0)); //get latest barcode from the array
+    intent.putExtra("barcode",barcodes.valueAt(0)); //get latest barcode from the arra
     setResult(CommonStatusCodes.SUCCESS,intent);
     finish();
+
 }
             }
         });

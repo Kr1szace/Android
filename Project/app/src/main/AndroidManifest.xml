@@ -14,11 +14,11 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-           <!-- <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
 
         <!-- add mobile vision dependencies and version to metada-->
@@ -31,10 +31,10 @@
         
         <activity android:name=".CameraActivityMain"
             android:label="Barcode Reader">
-           <intent-filter>
+        <!--   <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            </intent-filter> -->
         </activity>
         
         <activity android:name=".ScanBarcodeActivity"
