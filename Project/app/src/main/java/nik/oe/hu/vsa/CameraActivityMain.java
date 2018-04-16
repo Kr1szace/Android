@@ -36,7 +36,7 @@ public class CameraActivityMain extends Activity {
                 if(data!=null)
                 {
                     Barcode barcode=data.getParcelableExtra("barcode");
-                    barcodeResult.setText("Barcode value: "+barcode.displayValue);
+                    barcodeResult.setText("Az eredmény tesám: "+barcode.displayValue);
                 }else
                     {
                         barcodeResult.setText("No barcode found");
