@@ -68,7 +68,7 @@ public class ScanBarcodeActivity extends Activity {
             @Override
             public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
                 //Ez a rész még egyenlőre hónap vége
-                    surfaceHolder.setFormat(i);
+                   // surfaceHolder.setFormat(i);
             }
 
             @Override
