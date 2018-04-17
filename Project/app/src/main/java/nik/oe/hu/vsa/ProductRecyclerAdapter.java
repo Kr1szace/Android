@@ -17,6 +17,10 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
     List<Product> products;
 
+    public ProductRecyclerAdapter() {
+       //ide kéne  akibaszott adatbázis
+    }
+
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ProductViewHolder(View.inflate(parent.getContext(),R.layout.app_bar_main,null));
