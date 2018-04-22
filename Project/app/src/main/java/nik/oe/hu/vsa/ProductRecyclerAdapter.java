@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import  java.util.List;
+
 import java.util.List;
 
 import nik.oe.hu.model.Product;
@@ -15,10 +18,14 @@ import nik.oe.hu.model.Product;
 
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>{
 
-    List<Product> products;
+    //csak példa miatt
+    List<Product> products=new ArrayList<Product>();
+    Product vmi=new Product(100,"termek1","dafadf","adfadf2r",1230,12,null);
+    Product vmi1=new Product(110,"termek2","dafadf","adfadf2r",1230,12,null);
 
-    public ProductRecyclerAdapter() {
-       //ide kéne  akibaszott adatbázis
+    public ProductRecyclerAdapter(){
+       products.add(vmi);
+       products.add(vmi1);
     }
 
     @Override
