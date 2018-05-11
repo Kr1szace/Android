@@ -28,9 +28,6 @@ public class ScanBarcodeActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_barcode);
-
-
-
             cameraPreview = (SurfaceView) findViewById(R.id.camera_preview);
             createCameraSource();
 
@@ -81,6 +78,7 @@ public class ScanBarcodeActivity extends Activity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                    if (barcodes.size() > 0) {
+
                      Intent intent = new Intent();
                    intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
                  setResult(CommonStatusCodes.SUCCESS, intent);

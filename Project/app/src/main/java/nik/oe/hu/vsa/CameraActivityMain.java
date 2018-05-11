@@ -2,6 +2,7 @@ package nik.oe.hu.vsa;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.CameraSource;
@@ -142,10 +144,18 @@ public class CameraActivityMain extends Activity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() > 0) {
+                    String alma=barcodes.valueAt(0).toString();
+                   // Toast t=Toast.makeText(CameraActivityMain.this,alma,Toast.LENGTH_LONG);
+                    //t.show();
                     Intent intent = new Intent();
                     intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
                     setResult(CommonStatusCodes.SUCCESS, intent);
-                    finish();
+                    AlertDialog.Builder b=new AlertDialog.Builder(CameraActivityMain.this);
+                    b.setTitle("Scan Result");
+                    b.setMessage(alma);
+                    AlertDialog alert=b.create();
+                    alert.show();
+                   finish();
 
 
                     // if (barcodes.size() != 0)
