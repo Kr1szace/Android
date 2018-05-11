@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import nik.oe.hu.model.AppDatabase;
+
 /**
  * Created by Attila on 4/17/2018.
  */
@@ -26,7 +28,7 @@ public class ProductListActivity extends Activity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
 
-        ProductRecyclerAdapter adapter=new ProductRecyclerAdapter();
+        ProductRecyclerAdapter adapter=new ProductRecyclerAdapter(AppDatabase.getAppDatabase(this).productDAO().getAllProduct());
 
         recyclerView=(RecyclerView) findViewById(R.id.my_recycler_view);
 
@@ -34,4 +36,6 @@ public class ProductListActivity extends Activity {
         recyclerView.setAdapter(adapter);
 
     }
+
+
 }
