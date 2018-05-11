@@ -19,14 +19,14 @@ public class CameraActivityMain extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.camera_activity_main);
+
         ActivityCompat.requestPermissions(CameraActivityMain.this , new String[]{Manifest.permission.CAMERA},1600);
         if (ActivityCompat.checkSelfPermission(CameraActivityMain.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             finish();
         }
         else
         {
-
+            setContentView(R.layout.camera_activity_main);
             barcodeResult = (TextView)findViewById(R.id.barcode_result);
 
         }
