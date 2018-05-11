@@ -51,7 +51,7 @@ public class ProductActivity extends AppCompatActivity {
         barcode.setText(local.getBarcode());
 
         Typeface face = Typeface.createFromAsset(getAssets(),
-                "fonts/code128.ttf");
+                "font/code128.ttf");
         barcode.setTypeface(face);
 
         amount = (TextView) findViewById(R.id.product_amount);
