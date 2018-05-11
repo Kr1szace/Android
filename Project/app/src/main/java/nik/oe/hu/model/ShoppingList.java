@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
-import static junit.runner.BaseTestRunner.getPreferences;
+//import static junit.runner.BaseTestRunner.getPreferences;
 
 /**
  * Created by Haku on 2018. 05. 11..
