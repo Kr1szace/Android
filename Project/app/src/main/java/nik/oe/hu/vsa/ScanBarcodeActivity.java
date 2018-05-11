@@ -29,8 +29,12 @@ public class ScanBarcodeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_barcode);
 
-        cameraPreview = (SurfaceView) findViewById(R.id.camera_preview);
-        createCameraSource();
+
+
+            cameraPreview = (SurfaceView) findViewById(R.id.camera_preview);
+            createCameraSource();
+
+
     }
 
     private void createCameraSource() {
@@ -44,16 +48,6 @@ public class ScanBarcodeActivity extends Activity {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
                 if (ActivityCompat.checkSelfPermission(ScanBarcodeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    ActivityCompat.requestPermissions(ScanBarcodeActivity.this , new String[]{Manifest.permission.CAMERA},1600);
-                                        //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //  public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                      //                                       int[] grantResults)
-
-                     //to handle the case where the user grants the permission. See the documentation
-                     //for ActivityCompat#requestPermissions for more details.
-
                 }
                 try {
                     cameraSource.start(cameraPreview.getHolder());
