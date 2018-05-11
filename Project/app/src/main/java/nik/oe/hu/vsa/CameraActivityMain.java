@@ -1,9 +1,12 @@
 package nik.oe.hu.vsa;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +20,16 @@ public class CameraActivityMain extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera_activity_main);
-        barcodeResult = (TextView)findViewById(R.id.barcode_result);
+        ActivityCompat.requestPermissions(CameraActivityMain.this , new String[]{Manifest.permission.CAMERA},1600);
+        if (ActivityCompat.checkSelfPermission(CameraActivityMain.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            finish();
+        }
+        else
+        {
+
+            barcodeResult = (TextView)findViewById(R.id.barcode_result);
+
+        }
     }
 
     /*add click event to the scan barcode button*/
