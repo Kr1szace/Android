@@ -36,7 +36,7 @@ public class ProductActivity extends AppCompatActivity {
         });
 
         //Product local = getIntent().getExtras().getParcelable("product");
-        Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"https://secure.ce-tescoassets.com/assets/HU/955/211955/ShotType1_328x328.jpg");
+        Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
 
         name = (TextView) findViewById(R.id.product_name);
         name.setText(local.getName());

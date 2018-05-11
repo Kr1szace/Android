@@ -23,6 +23,9 @@ public class ProductListActivity extends Activity {
         setContentView(R.layout.product_list);
 
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+
         ProductRecyclerAdapter adapter=new ProductRecyclerAdapter();
 
         recyclerView=(RecyclerView) findViewById(R.id.my_recycler_view);
