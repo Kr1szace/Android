@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
 
 public class MainActivity extends AppCompatActivity
@@ -126,6 +127,12 @@ public class MainActivity extends AppCompatActivity
         prod1.setPrice(15);
         prod1.setImage_url("https://secure.ce-tescoassets.com/assets/HU/955/211955/ShotType1_328x328.jpg");
         prod.add(prod1);
+
+        if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Kifli").size() < 1)
+            AppDatabase.getAppDatabase(this).productDAO().Insert(prod1);
+
+
+        //AppDatabase.getAppDatabase(this).productDAO().getAllProduct();
 
         return prod;
     }
