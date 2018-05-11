@@ -4,13 +4,15 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by Haku on 2018. 04. 15..
  */
 
 @Entity
-public class Product {
+public class Product implements Parcelable{
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "name")
@@ -40,6 +42,44 @@ public class Product {
     public Product() {
         //
     }
+
+    protected Product(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        barcode = in.readString();
+        price = in.readInt();
+        amount = in.readInt();
+        image_url = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(barcode);
+        dest.writeInt(price);
+        dest.writeInt(amount);
+        dest.writeString(image_url);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public int getId() {
         return id;
