@@ -22,6 +22,9 @@ public interface ProductDAO {
     @Query("SELECT * FROM product WHERE barcode = :barcode")
     Product getProductByBarCode(String barcode);
 
+    @Query("SELECT * FROM product WHERE id = :id")
+    Product getProductByBarID(int id);
+
     @Insert
     void Insert(Product product);
 }
