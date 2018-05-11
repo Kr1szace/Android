@@ -12,6 +12,7 @@ import  java.util.List;
 
 import java.util.List;
 
+import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
 
 /**
@@ -21,14 +22,15 @@ import nik.oe.hu.model.Product;
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>{
 
     //csak példa miatt
-    List<Product> products=new ArrayList<Product>();
-    Product vmi=new Product(100,"termek1","dafadf","adfadf2r",1230,12,null);
-    Product vmi1=new Product(110,"termek2","dafadf","adfadf2r",1230,12,null);
+    List<Product> products;
+    //Product vmi=new Product(100,"termek1","dafadf","adfadf2r",1230,12,null);
+    //Product vmi1=new Product(110,"termek2","dafadf","adfadf2r",1230,12,null);
 
-    public ProductRecyclerAdapter(){
-        //kostruktorba majd vmi  string[] MyDataSet eseteleg
-       products.add(vmi);
-       products.add(vmi1);
+    //data
+
+
+    public ProductRecyclerAdapter(List<Product> allProduct){
+        this.products=allProduct;
     }
 
     @Override
