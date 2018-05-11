@@ -70,21 +70,20 @@ public class CameraActivityMain extends Activity {
         startActivityForResult(intent, 0);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 0) {
-            if (resultCode == CommonStatusCodes.SUCCESS) {
-                if (data != null) {
-                    Barcode barcode = data.getParcelableExtra("barcode");
-                    barcodeResult.setText("Az eredmény tesám: " + barcode.displayValue);
-                } else {
-                    barcodeResult.setText("No barcode found");
-                }
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
+   // @Override
+  //  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    //    if (requestCode == 0) {
+     //       if (resultCode == CommonStatusCodes.SUCCESS) {
+     //           if (data != null) {
+     //               Barcode barcode = data.getParcelableExtra("barcode");
+     //               barcodeResult.setText("Az eredmény tesám: " + barcode.displayValue);
+     //           } else {
+      //              barcodeResult.setText("No barcode found");
+//            }
+      //  } else {
+       //     super.onActivityResult(requestCode, resultCode, data);
+       // }
+    //}
 
     ///Hónap végi mixelgetések
     //@Override
@@ -154,10 +153,10 @@ public class CameraActivityMain extends Activity {
                     AlertDialog alert=b.create();
                     alert.show();
 
-                    Intent intent = new Intent();
-                    intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
-                    setResult(CommonStatusCodes.SUCCESS, intent);
-                   finish();
+                    //Intent intent = new Intent();
+                   // intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
+                  //  setResult(CommonStatusCodes.SUCCESS, intent);
+                  // finish();
 
 
                     // if (barcodes.size() != 0)
