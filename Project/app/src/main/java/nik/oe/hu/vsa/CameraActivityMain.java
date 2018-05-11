@@ -19,17 +19,18 @@ public class CameraActivityMain extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ActivityCompat.requestPermissions(CameraActivityMain.this , new String[]{Manifest.permission.CAMERA},1600);
+        int cameraPermission = this.checkSelfPermission(Manifest.permission.CAMERA);
         if (ActivityCompat.checkSelfPermission(CameraActivityMain.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             finish();
         }
-        else
-        {
+
             setContentView(R.layout.camera_activity_main);
             barcodeResult = (TextView)findViewById(R.id.barcode_result);
 
-        }
+
+
+
+
     }
 
     /*add click event to the scan barcode button*/
