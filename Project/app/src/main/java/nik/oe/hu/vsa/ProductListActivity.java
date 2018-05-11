@@ -25,7 +25,7 @@ public class ProductListActivity extends Activity {
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         ProductRecyclerAdapter adapter=new ProductRecyclerAdapter();
 
-        recyclerView=findViewById(R.id.product_price);
+        recyclerView=(RecyclerView) findViewById(R.id.my_recycler_view);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

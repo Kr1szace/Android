@@ -46,10 +46,15 @@
         <activity
             android:name=".ScanBarcodeActivity"
             android:label="Scan Barcode" />
+<<<<<<< HEAD
         <activity
             android:name=".ProductActivity"
             android:label="@string/title_activity_product"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+        <activity android:name=".ProductListActivity"
+            android:label="Porduct List" />
+>>>>>>> 58754be41528e45b0dac7adbb1c4def16ac0836f
     </application>
 
 </manifest>
