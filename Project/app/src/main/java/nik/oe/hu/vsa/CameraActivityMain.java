@@ -147,14 +147,16 @@ public class CameraActivityMain extends Activity {
                     String alma=barcodes.valueAt(0).toString();
                    // Toast t=Toast.makeText(CameraActivityMain.this,alma,Toast.LENGTH_LONG);
                     //t.show();
-                    Intent intent = new Intent();
-                    intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
-                    setResult(CommonStatusCodes.SUCCESS, intent);
+
                     AlertDialog.Builder b=new AlertDialog.Builder(CameraActivityMain.this);
                     b.setTitle("Scan Result");
                     b.setMessage(alma);
                     AlertDialog alert=b.create();
                     alert.show();
+
+                    Intent intent = new Intent();
+                    intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
+                    setResult(CommonStatusCodes.SUCCESS, intent);
                    finish();
 
 
