@@ -39,6 +39,8 @@
         
         <activity android:name=".ScanBarcodeActivity"
             android:label="Scan Barcode" />
+        <activity android:name=".ProductListActivity"
+            android:label="Porduct List" />
     </application>
 
 </manifest>
