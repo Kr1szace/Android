@@ -16,22 +16,40 @@ import com.google.android.gms.vision.barcode.Barcode;
 public class CameraActivityMain extends Activity {
     TextView barcodeResult;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int cameraPermission = this.checkSelfPermission(Manifest.permission.CAMERA);
-        if (ActivityCompat.checkSelfPermission(CameraActivityMain.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            finish();
-        }
-
-            setContentView(R.layout.camera_activity_main);
-            barcodeResult = (TextView)findViewById(R.id.barcode_result);
-
-
-
-
-
+        ActivityCompat.requestPermissions(CameraActivityMain.this, new String[]{Manifest.permission.CAMERA}, 1600);
+       // if (ActivityCompat.checkSelfPermission(CameraActivityMain.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+       //     finish();
+       // }else {
+      //      setContentView(R.layout.camera_activity_main);
+      //      barcodeResult = (TextView) findViewById(R.id.barcode_result);
+       // }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        int permissionCheck = PackageManager.PERMISSION_GRANTED;
+        for (int permission : grantResults) {
+            permissionCheck = permissionCheck + permission;
+        }
+        if ((grantResults.length > 0) && permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            setContentView(R.layout.camera_activity_main);
+            barcodeResult = (TextView) findViewById(R.id.barcode_result);
+        } else {
+
+            finish();
+
+        }
+    }
+
+
+
+
 
     /*add click event to the scan barcode button*/
     public  void scanBarcode(View v)
