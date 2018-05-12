@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/list_row_padding_vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/list_row_padding_vertical"
     >
 
-    <android.support.v7.widget.AppCompatTextView
+    <TextView
         android:id="@+id/product_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/my_recycler_view"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorProductName"
+        android:textSize="16dp"
+        android:textStyle="bold"
         />
+
 
 </LinearLayout>
