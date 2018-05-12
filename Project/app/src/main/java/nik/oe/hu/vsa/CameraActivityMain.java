@@ -66,7 +66,8 @@ public class CameraActivityMain extends Activity {
 
     /*add click event to the scan barcode button*/
     public void scanBarcode(View v) {
-        Intent intent = new Intent(this, ScanBarcodeActivity.class);
+        //lehet itt volt a hiba
+        Intent intent = new Intent(this, CameraActivityMain.class);
         startActivityForResult(intent, 0);
     }
 
