@@ -139,10 +139,23 @@ public class MainActivity extends AppCompatActivity
         prod2.setImage_url("http://www.nosalty.hu/files/imagecache/recept/recept_kepek/hazi-magvas-zsemle.JPG");
         prod.add(prod2);
 
+        Product szorp = new Product();
+        szorp.setName("Piroska Málna");
+        szorp.setDescription("Finom, édes, málna ízű szörp.");
+        szorp.setBarcode("5998818562252");
+        szorp.setPrice(450);
+        szorp.setAmount(200);
+        szorp.setImage_url("https://sporolok.com/wp-content/uploads/2016/06/piroska_szorp-620x329.jpg");
+        prod.add(szorp);
+
         if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Kifli").size() < 1)
             AppDatabase.getAppDatabase(this).productDAO().Insert(prod1);
 
+        if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Császár zsömle").size() < 1)
+            AppDatabase.getAppDatabase(this).productDAO().Insert(prod2);
 
+        if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Piroska Málna").size() < 1)
+            AppDatabase.getAppDatabase(this).productDAO().Insert(szorp);
         //AppDatabase.getAppDatabase(this).productDAO().getAllProduct();
 
         return prod;
