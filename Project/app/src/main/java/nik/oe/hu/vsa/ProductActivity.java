@@ -68,7 +68,8 @@ public class ProductActivity extends AppCompatActivity {
 
         Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
 
-        if (getIntent().getExtras().getParcelable("barcode") != null) {
+
+        if (getIntent().getExtras() != null) {
             Barcode barcode_camera = getIntent().getExtras().getParcelable("barcode");
             product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_camera.displayValue);
         }
