@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,11 +26,13 @@ import java.util.List;
 
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
+import nik.oe.hu.model.ShoppingList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recyclerView;
+    private ShoppingList shoppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,18 @@ public class MainActivity extends AppCompatActivity
         this.createFakeInstances();
 
         //bevásárló lista része---------------------------------------------------------------------
+        shoppingList=new ShoppingList(this);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+        //shoppinglist==null ?
+        ProductRecyclerAdapter shoppinglistAdapter=new ProductRecyclerAdapter(shoppingList.getShoppingList(),0);
+
+        recyclerView=(RecyclerView) findViewById(R.id.shopping_recycle_view);
+        recyclerView.setLayoutManager(layoutManager);
+        //separátor
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(shoppinglistAdapter);
 
 
     }

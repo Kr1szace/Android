@@ -9,17 +9,12 @@
     tools:context="nik.oe.hu.vsa.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:id="@+id/alap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bevásárló lista"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="16dp"
-        android:textStyle="bold"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:id="@+id/shopping_recycle_view"
         />
+
 
 </RelativeLayout>

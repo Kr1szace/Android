@@ -32,7 +32,7 @@ public class ProductListActivity extends Activity {
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        final ProductRecyclerAdapter adapter=new ProductRecyclerAdapter(AppDatabase.getAppDatabase(this).productDAO().getAllProduct());
+        final ProductRecyclerAdapter adapter=new ProductRecyclerAdapter(AppDatabase.getAppDatabase(this).productDAO().getAllProduct(),1);
 
         recyclerView=(RecyclerView) findViewById(R.id.my_recycler_view);
 
