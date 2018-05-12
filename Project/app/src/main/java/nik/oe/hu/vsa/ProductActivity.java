@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.squareup.picasso.Picasso;
 
+import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
+import nik.oe.hu.model.ProductDAO;
 
 //Csuba
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -28,6 +30,8 @@ public class ProductActivity extends AppCompatActivity {
     TextView name, description, price, barcode, amount;
     ImageView image;
 
+    Product product;
+
     //Csuba Mixe
      @Override
      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -35,7 +39,8 @@ public class ProductActivity extends AppCompatActivity {
           if (resultCode == CommonStatusCodes.SUCCESS) {
           if (data != null) {
                   Barcode barcode = data.getParcelableExtra("barcode");
-                  name.setText("Az eredmény tesám: " + barcode.displayValue);
+                  //name.setText("Az eredmény tesám: " + barcode.displayValue);
+                  product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode.displayValue);
                } else {
                  name.setText("No barcode found");
           }
@@ -61,10 +66,12 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-
-
-        //Product local = getIntent().getExtras().getParcelable("product");
         Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
+        Barcode barcode_camera = getIntent().getExtras().getParcelable("barcode");
+        product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_camera.displayValue);
+
+        if (product != null)
+            local = product;
 
         name = (TextView) findViewById(R.id.product_name);
         name.setText(local.getName());
