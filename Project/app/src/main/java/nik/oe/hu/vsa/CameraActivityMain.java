@@ -153,10 +153,10 @@ public class CameraActivityMain extends Activity {
                     AlertDialog alert=b.create();
                     alert.show();
 
-                    //Intent intent = new Intent();
-                   // intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
-                  //  setResult(CommonStatusCodes.SUCCESS, intent);
-                  // finish();
+                    Intent intent = new Intent();
+                    intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
+                    setResult(CommonStatusCodes.SUCCESS, intent);
+                  finish();
 
 
                     // if (barcodes.size() != 0)
