@@ -74,7 +74,7 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
+        Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","599123456894",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
 
 
         if (getIntent().getExtras() != null) {
@@ -88,7 +88,7 @@ public class ProductActivity extends AppCompatActivity {
         }
 
         name = (TextView) findViewById(R.id.product_name);
-       name.setText(barcode.getText());
+       name.setText(local.getName());
 
 
         description = (TextView) findViewById(R.id.product_descrip);
