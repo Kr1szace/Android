@@ -129,6 +129,16 @@ public class MainActivity extends AppCompatActivity
         prod1.setImage_url("https://secure.ce-tescoassets.com/assets/HU/955/211955/ShotType1_328x328.jpg");
         prod.add(prod1);
 
+
+        Product prod2=new Product();
+        prod2.setName("Császár zsömle");
+        prod2.setDescription("Helyben sütött patika császár zsömle");
+        prod2.setBarcode("269");
+        prod2.setAmount(3242);
+        prod2.setPrice(15);
+        prod2.setImage_url("http://www.nosalty.hu/files/imagecache/recept/recept_kepek/hazi-magvas-zsemle.JPG");
+        prod.add(prod2);
+
         if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Kifli").size() < 1)
             AppDatabase.getAppDatabase(this).productDAO().Insert(prod1);
 
