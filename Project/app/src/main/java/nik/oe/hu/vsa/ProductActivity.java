@@ -84,12 +84,10 @@ public class ProductActivity extends AppCompatActivity {
 
         if (product != null){
             local = product;
-
         }
 
         name = (TextView) findViewById(R.id.product_name);
-       name.setText(local.getName());
-
+        name.setText(local.getName());
 
         description = (TextView) findViewById(R.id.product_descrip);
         description.setText(local.getDescription());

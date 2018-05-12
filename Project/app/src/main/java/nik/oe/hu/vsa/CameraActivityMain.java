@@ -157,6 +157,7 @@ public class CameraActivityMain extends Activity {
                     Intent intent = new Intent(CameraActivityMain.this, ProductActivity.class);
                     intent.putExtra("barcode", barcodes.valueAt(0)); //get latest barcode from the array
                     setResult(CommonStatusCodes.SUCCESS, intent);
+                    startActivity(intent);
                   finish();
 
 
