@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
 import nik.oe.hu.model.ProductDAO;
+import nik.oe.hu.model.ShoppingList;
 
 //Csuba
 import com.google.android.gms.common.api.CommonStatusCodes;
@@ -32,6 +33,7 @@ public class ProductActivity extends AppCompatActivity {
 
     Product product;
 
+    ShoppingList shoppingList;
     //Csuba Mixe
      @Override
      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -40,7 +42,12 @@ public class ProductActivity extends AppCompatActivity {
           if (data != null) {
                   Barcode barcode = data.getParcelableExtra("barcode");
                   //name.setText("Az eredmény tesám: " + barcode.displayValue);
+
+                  product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode.displayValue);
+
+
                   //product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode.displayValue);
+
                } else {
                  name.setText("No barcode found");
           }
@@ -61,6 +68,7 @@ public class ProductActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                shoppingList.addProduct(product);
                 Snackbar.make(view, "Hozzáadva a bevásárlólistához", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -80,7 +88,7 @@ public class ProductActivity extends AppCompatActivity {
         }
 
         name = (TextView) findViewById(R.id.product_name);
-        name.setText(local.getName());
+       name.setText(barcode.getText());
 
 
         description = (TextView) findViewById(R.id.product_descrip);
