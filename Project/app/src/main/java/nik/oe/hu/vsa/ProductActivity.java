@@ -35,6 +35,8 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
+
+
         //Product local = getIntent().getExtras().getParcelable("product");
         Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
 
@@ -61,5 +63,11 @@ public class ProductActivity extends AppCompatActivity {
         Picasso.get().load(local.getImage_url()).into(image);
 
     }
+    /*
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+        setContentView(R.layout.activity_product);
+    }*/
 }
