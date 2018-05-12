@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,11 +26,13 @@ import java.util.List;
 
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
+import nik.oe.hu.model.ShoppingList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recyclerView;
+    private ShoppingList shoppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,18 @@ public class MainActivity extends AppCompatActivity
         this.createFakeInstances();
 
         //bevásárló lista része---------------------------------------------------------------------
+        shoppingList=new ShoppingList(this);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+        //shoppinglist==null ?
+        ProductRecyclerAdapter shoppinglistAdapter=new ProductRecyclerAdapter(shoppingList.getShoppingList(),0);
+
+        recyclerView=(RecyclerView) findViewById(R.id.shopping_recycle_view);
+        recyclerView.setLayoutManager(layoutManager);
+        //separátor
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(shoppinglistAdapter);
 
 
     }
@@ -146,10 +161,23 @@ public class MainActivity extends AppCompatActivity
         prod2.setImage_url("http://www.nosalty.hu/files/imagecache/recept/recept_kepek/hazi-magvas-zsemle.JPG");
         prod.add(prod2);
 
+        Product szorp = new Product();
+        szorp.setName("Piroska Málna");
+        szorp.setDescription("Finom, édes, málna ízű szörp.");
+        szorp.setBarcode("5998818562252");
+        szorp.setPrice(450);
+        szorp.setAmount(200);
+        szorp.setImage_url("https://sporolok.com/wp-content/uploads/2016/06/piroska_szorp-620x329.jpg");
+        prod.add(szorp);
+
         if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Kifli").size() < 1)
             AppDatabase.getAppDatabase(this).productDAO().Insert(prod1);
 
+        if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Császár zsömle").size() < 1)
+            AppDatabase.getAppDatabase(this).productDAO().Insert(prod2);
 
+        if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Piroska Málna").size() < 1)
+            AppDatabase.getAppDatabase(this).productDAO().Insert(szorp);
         //AppDatabase.getAppDatabase(this).productDAO().getAllProduct();
 
         return prod;

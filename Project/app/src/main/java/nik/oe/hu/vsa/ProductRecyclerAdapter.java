@@ -25,11 +25,12 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     List<Product> products;
     //Product vmi=new Product(100,"termek1","dafadf","adfadf2r",1230,12,null);
     //Product vmi1=new Product(110,"termek2","dafadf","adfadf2r",1230,12,null);
-
+    private int whichActivity;
     //data
 
 
-    public ProductRecyclerAdapter(List<Product> allProduct){
+    public ProductRecyclerAdapter(List<Product> allProduct, int activity){
+        this.whichActivity=activity;
         this.products=allProduct;
     }
 
@@ -37,7 +38,13 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     public ProductRecyclerAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Linear volt
         //View listItem = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.product_list,parent,false);
-         return new ProductViewHolder(View.inflate(parent.getContext(),R.layout.product_list,null));
+        //jó igen tudom, ez így nem biztos h szép megoldás
+        if(whichActivity==0){
+            return new ProductViewHolder(View.inflate(parent.getContext(),R.layout.content_shopping_list,null));
+        }
+        else {
+            return new ProductViewHolder(View.inflate(parent.getContext(), R.layout.product_list, null));
+        }
         // viewHolder=new ProductViewHolder(listItem);
         //return viewHolder;
 
