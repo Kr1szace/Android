@@ -10,14 +10,40 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.vision.barcode.Barcode;
 import com.squareup.picasso.Picasso;
 
 import nik.oe.hu.model.Product;
+
+//Csuba
+import com.google.android.gms.common.api.CommonStatusCodes;
+import android.content.Intent;
+
+
+//váge
+
 
 public class ProductActivity extends AppCompatActivity {
 
     TextView name, description, price, barcode, amount;
     ImageView image;
+
+    //Csuba Mixe
+     @Override
+     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+          if (resultCode == CommonStatusCodes.SUCCESS) {
+          if (data != null) {
+                  Barcode barcode = data.getParcelableExtra("barcode");
+                  name.setText("Az eredmény tesám: " + barcode.displayValue);
+               } else {
+                 name.setText("No barcode found");
+          }
+     } else {
+        super.onActivityResult(requestCode, resultCode, data);
+     }
+        }}
+    //itt a vége
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +68,7 @@ public class ProductActivity extends AppCompatActivity {
 
         name = (TextView) findViewById(R.id.product_name);
         name.setText(local.getName());
+
 
         description = (TextView) findViewById(R.id.product_descrip);
         description.setText(local.getDescription());
