@@ -15,14 +15,12 @@ import com.squareup.picasso.Picasso;
 
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
-import nik.oe.hu.model.ProductDAO;
+
 import nik.oe.hu.model.ShoppingList;
 
 //Csuba
 import com.google.android.gms.common.api.CommonStatusCodes;
 import android.content.Intent;
-
-
 //váge
 
 

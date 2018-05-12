@@ -65,11 +65,11 @@ public class CameraActivityMain extends Activity {
 
 
     /*add click event to the scan barcode button*/
-    public void scanBarcode(View v) {
+   // public void scanBarcode(View v) {
         //lehet itt volt a hiba
-        Intent intent = new Intent(this, CameraActivityMain.class);
-        startActivityForResult(intent, 0);
-    }
+     //   Intent intent = new Intent(this, CameraActivityMain.class);
+      //  startActivityForResult(intent, 0);
+    //}
 
    // @Override
   //  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
