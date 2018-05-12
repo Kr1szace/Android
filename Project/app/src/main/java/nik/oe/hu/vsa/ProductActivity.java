@@ -42,7 +42,11 @@ public class ProductActivity extends AppCompatActivity {
           if (data != null) {
                   Barcode barcode = data.getParcelableExtra("barcode");
                   //name.setText("Az eredmény tesám: " + barcode.displayValue);
+
                   product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode.displayValue);
+
+
+                  //product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode.displayValue);
 
                } else {
                  name.setText("No barcode found");
@@ -71,11 +75,16 @@ public class ProductActivity extends AppCompatActivity {
         });
 
         Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","123456",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
-        Barcode barcode_camera = getIntent().getExtras().getParcelable("barcode");
-        product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_camera.displayValue);
 
-        if (product != null)
+        if (getIntent().getExtras().getParcelable("barcode") != null) {
+            Barcode barcode_camera = getIntent().getExtras().getParcelable("barcode");
+            product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_camera.displayValue);
+        }
+
+        if (product != null){
             local = product;
+
+        }
 
         name = (TextView) findViewById(R.id.product_name);
         name.setText(local.getName());
