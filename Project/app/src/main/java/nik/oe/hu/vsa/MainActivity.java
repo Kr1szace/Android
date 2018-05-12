@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recyclerView;
-    private ShoppingList shoppingList;
+    public ShoppingList shoppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +67,18 @@ public class MainActivity extends AppCompatActivity
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         //shoppinglist==null ?
-        ProductRecyclerAdapter shoppinglistAdapter=new ProductRecyclerAdapter(shoppingList.getShoppingList(),0);
+        if (shoppingList.getShoppingList()==null) {
+         //Üres a bevásárló listád üzi
+        }
+        else {
+            ProductRecyclerAdapter shoppinglistAdapter = new ProductRecyclerAdapter(shoppingList.getShoppingList(), 0);
 
-        recyclerView=(RecyclerView) findViewById(R.id.shopping_recycle_view);
-        recyclerView.setLayoutManager(layoutManager);
-        //separátor
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(shoppinglistAdapter);
+            recyclerView = (RecyclerView) findViewById(R.id.shopping_recycle_view);
+            recyclerView.setLayoutManager(layoutManager);
+            //separátor
+            recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+            recyclerView.setAdapter(shoppinglistAdapter);
+        }
 
 
     }
