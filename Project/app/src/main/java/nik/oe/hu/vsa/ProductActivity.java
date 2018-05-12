@@ -88,7 +88,7 @@ public class ProductActivity extends AppCompatActivity {
         }
 
         name = (TextView) findViewById(R.id.product_name);
-       name.setText(barcode.getText());
+        name.setText(local.getName());
 
 
         description = (TextView) findViewById(R.id.product_descrip);
