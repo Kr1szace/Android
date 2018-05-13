@@ -61,6 +61,7 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        shoppingList=new ShoppingList(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
