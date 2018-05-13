@@ -144,7 +144,7 @@ public class CameraActivityMain extends Activity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() > 0) {
-                    String alma=barcodes.valueAt(0).toString();
+                   // String alma=barcodes.valueAt(0).toString();
                    // Toast t=Toast.makeText(CameraActivityMain.this,alma,Toast.LENGTH_LONG);
                     //t.show();
 

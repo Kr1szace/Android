@@ -13,6 +13,6 @@ public class NoSuchItemInShoppingListException extends NotAllowedShoppingListAct
 
     @Override
     public  String getMessage(){
-        return product.getName() + " tétel nem szerepel a beásárlólistájában.";
+        return super.product.getName() + " tétel nem szerepel a beásárlólistájában.";
     }
 }

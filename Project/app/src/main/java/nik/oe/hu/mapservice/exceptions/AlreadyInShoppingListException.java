@@ -4,12 +4,12 @@ import nik.oe.hu.model.Product;
 
 public class AlreadyInShoppingListException extends NotAllowedShoppingListActionException{
 
-    public AlreadyInShoppingListException(Product productct) {
-        super(productct);
+    public AlreadyInShoppingListException(Product product) {
+        super(product);
     }
 
     @Override
     public  String getMessage(){
-        return product.getName() + " tétel már szerepel a beásárlólistájában.";
+        return super.product.getName() + " tétel már szerepel a beásárlólistájában.";
     }
 }

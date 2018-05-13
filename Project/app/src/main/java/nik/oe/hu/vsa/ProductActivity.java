@@ -31,7 +31,7 @@ public class ProductActivity extends AppCompatActivity {
     TextView name, description, price, barcode, amount;
     ImageView image;
 
-    Product product;
+    Product deafult, product;
 
     ShoppingList shoppingList;
     //Csuba Mixe
@@ -65,22 +65,7 @@ public class ProductActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         shoppingList=new ShoppingList(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    shoppingList.addProduct(product);
-                    Snackbar.make(view, "Hozzáadva a bevásárlólistához", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                } catch (AlreadyInShoppingListException e) {
-                    Toast.makeText(ProductActivity.this, e.getMessage(), Toast.LENGTH_LONG);
-                }
-
-            }
-        });
-
-        Product local = new Product(1,"Kifli","Finom, tápláló péksütemény","599123456894",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
+        deafult = new Product(1,"Kifli","Finom, tápláló péksütemény","599123456894",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
 
 
         if (getIntent().getExtras() != null) {
@@ -89,30 +74,48 @@ public class ProductActivity extends AppCompatActivity {
         }
 
         if (product != null){
-            local = product;
+            deafult = product;
         }
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    shoppingList.addProduct(deafult);
+                    Snackbar.make(view, "Hozzáadva a bevásárlólistához", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                } catch (AlreadyInShoppingListException e) {
+                    Toast.makeText(ProductActivity.this,
+                            e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+
+
         name = (TextView) findViewById(R.id.product_name);
-        name.setText(local.getName());
+        name.setText(deafult.getName());
 
         description = (TextView) findViewById(R.id.product_descrip);
-        description.setText(local.getDescription());
+        description.setText(deafult.getDescription());
 
         price = (TextView) findViewById(R.id.product_price);
-        price.setText(local.getPrice() + " Ft");
+        price.setText(deafult.getPrice() + " Ft");
 
         barcode = (TextView) findViewById(R.id.product_barcode);
-        barcode.setText(local.getBarcode());
+        barcode.setText(deafult.getBarcode());
 
         Typeface face = Typeface.createFromAsset(getAssets(),
                 "font/code128.ttf");
         barcode.setTypeface(face);
 
         amount = (TextView) findViewById(R.id.product_amount);
-        amount.setText(local.getAmount() + " db");
+        amount.setText(deafult.getAmount() + " db");
 
         image = (ImageView) findViewById(R.id.product_image);
-        Picasso.get().load(local.getImage_url()).into(image);
+        Picasso.get().load(deafult.getImage_url()).into(image);
 
     }
     /*
