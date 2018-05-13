@@ -39,16 +39,16 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
         this.products=allProduct;
     }
-    /*
-    public ProductRecyclerAdapter(ShoppingList shoppingList, int activity){
+
+/*    public ProductRecyclerAdapter(ShoppingList shoppingList, int activity){
         this.whichActivity=activity;
-        this.shoppingList=shoppingList;
+        products=shoppingList.getShoppingList();
     }*/
     //lehet kell még egy konstrucktor?
 
     //shoppinglisté
     public ProductRecyclerAdapter(ShoppingList shoppingList){
-        this.shoppingList=shoppingList;
+       this.shoppingList=shoppingList;
     }
 
     @Override
@@ -73,19 +73,19 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
             Product product = products.get(position);
             holder.nameTextView.setText(product.getName());
         }
-        else{
-            Product product=shoppingList.getShoppingList()
+        else {
+            Product product = (Product) shoppingList.getShoppingList();
         }
                 //holder.priceTextView.setText(product.getPrice());
     }
 
+
     @Override
     public int getItemCount() {
-        return products !=null ? products.size():0;
+        return products != null ? products.size():0;
     }
 
-
-    public void removeItem(Product product,int position){
+    public void removeItem(Product product, int position){
         try {
             shoppingList.removeProduct(product);
         } catch (NoSuchItemInShoppingListException e) {
