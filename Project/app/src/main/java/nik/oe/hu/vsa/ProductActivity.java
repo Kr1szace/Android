@@ -69,8 +69,14 @@ public class ProductActivity extends AppCompatActivity {
 
 
         if (getIntent().getExtras() != null) {
-            Barcode barcode_camera = getIntent().getExtras().getParcelable("barcode");
-            product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_camera.displayValue);
+            if (getIntent().getExtras().getParcelable("barcode") != null){
+                Barcode barcode_camera = getIntent().getExtras().getParcelable("barcode");
+                product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_camera.displayValue);
+            }
+            if (getIntent().getExtras().getString("barcode_s") != null ){
+                String barcode_s = getIntent().getExtras().getString("barcode_s");
+                product = AppDatabase.getAppDatabase(this).productDAO().getProductByBarCode(barcode_s);
+            }
         }
 
         if (product != null){

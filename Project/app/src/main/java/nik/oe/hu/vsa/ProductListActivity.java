@@ -47,6 +47,7 @@ public class ProductListActivity extends Activity {
                 //itt kéne bemenni egy product activitybe
                 Product product=adapter.products.get(position);
                 Intent intent = new Intent(view.getContext(),ProductActivity.class);
+                intent.putExtra("barcode_s",product.getBarcode());
                 startActivity(intent);
                 //Movie movie = movieList.get(position);
                 //Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
