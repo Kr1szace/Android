@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     public ShoppingList shoppingList;
     public ProductRecyclerAdapter productAdapter;
+
+    public ShoppingListRecyclerAdapter shoppingListRecyclerAdapter;
     private CoordinatorLayout coordinatorLayout;
 
     @Override
@@ -69,8 +71,19 @@ public class MainActivity extends AppCompatActivity
 
 
         //bevásárló lista része---------------------------------------------------------------------
+
        shoppingList=new ShoppingList(this);
 
+       shoppingListRecyclerAdapter=new ShoppingListRecyclerAdapter(shoppingList);
+
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView = (RecyclerView) findViewById(R.id.shopping_recycle_view);
+        recyclerView.setLayoutManager(layoutManager);
+        //separátor
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(shoppingListRecyclerAdapter);
+/*
         productAdapter=new ProductRecyclerAdapter(shoppingList);
 
         //productAdapter=new ProductRecyclerAdapter(shoppingList,1);
@@ -91,7 +104,7 @@ public class MainActivity extends AppCompatActivity
             //separátor
             recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
             recyclerView.setAdapter(shoppinglistAdapter);
-        }
+        }*/
 
         //ShoppingListHandler();
 
