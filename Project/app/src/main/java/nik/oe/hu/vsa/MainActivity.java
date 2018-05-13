@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         this.createFakeInstances();
 
         //bevásárló lista része---------------------------------------------------------------------
-        shoppingList=new ShoppingList(this);
+       shoppingList=new ShoppingList(this);
         productAdapter=new ProductRecyclerAdapter(shoppingList);
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -75,6 +75,44 @@ public class MainActivity extends AppCompatActivity
         //shoppinglist==null ?
         if (shoppingList.getShoppingList()==null) {
          //Üres a bevásárló listád üzi
+        }
+        else {
+            ProductRecyclerAdapter shoppinglistAdapter = new ProductRecyclerAdapter(shoppingList.getShoppingList(), 0);
+
+            recyclerView = (RecyclerView) findViewById(R.id.shopping_recycle_view);
+            recyclerView.setLayoutManager(layoutManager);
+            //separátor
+            recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+            recyclerView.setAdapter(shoppinglistAdapter);
+        }
+
+
+        //ShoppingListHandler();
+
+    }
+/*
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ShoppingListHandler();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        ShoppingListHandler();
+    }
+*/
+    private void ShoppingListHandler(){
+        shoppingList=new ShoppingList(this);
+        productAdapter=new ProductRecyclerAdapter(shoppingList);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        //shoppinglist==null ?
+        if (shoppingList.getShoppingList()==null) {
+            //Üres a bevásárló listád üzi
         }
         else {
             ProductRecyclerAdapter shoppinglistAdapter = new ProductRecyclerAdapter(shoppingList.getShoppingList(), 0);

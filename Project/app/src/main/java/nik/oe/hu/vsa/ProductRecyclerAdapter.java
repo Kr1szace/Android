@@ -47,10 +47,10 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
         //View listItem = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.product_list,parent,false);
         //jó igen tudom, ez így nem biztos h szép megoldás
         if(whichActivity==0){
-            return new ProductViewHolder(View.inflate(parent.getContext(),R.layout.content_shopping_list,null));
+            return new ProductViewHolder(View.inflate(parent.getContext(),R.layout.content_shopping_list,null),0);
         }
         else {
-            return new ProductViewHolder(View.inflate(parent.getContext(), R.layout.product_list, null));
+            return new ProductViewHolder(View.inflate(parent.getContext(), R.layout.product_list, null),1);
         }
         // viewHolder=new ProductViewHolder(listItem);
         //return viewHolder;
@@ -86,13 +86,21 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
         public RelativeLayout viewBackground, viewForeground;
 
-        public ProductViewHolder(View productListView) {
+        private int whichActivity;
+
+        public ProductViewHolder(View productListView, int activity) {
             super(productListView);
-            nameTextView=productListView.findViewById(R.id.product_name);
-            //priceTextView=productListView.findViewById(R.id.product_price);
-            //lehet szét fog esni
-            viewBackground=productListView.findViewById(R.id.view_background);
-            viewForeground=productListView.findViewById(R.id.view_foreground);
+            this.whichActivity=activity;
+
+            if(whichActivity==1) {
+                nameTextView = productListView.findViewById(R.id.product_name);
+                //priceTextView=productListView.findViewById(R.id.product_price);
+            }
+            else {
+                nameTextView=productListView.findViewById(R.id.product_item_name);
+                viewBackground = productListView.findViewById(R.id.view_background);
+                viewForeground = productListView.findViewById(R.id.view_foreground);
+            }
         }
     }
 }
