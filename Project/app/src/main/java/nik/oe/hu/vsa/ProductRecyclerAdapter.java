@@ -24,23 +24,30 @@ import nik.oe.hu.model.ShoppingList;
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>{
 
     //csak példa miatt
-    List<Product> products;
+    List<Product> products; //1
     //Product vmi=new Product(100,"termek1","dafadf","adfadf2r",1230,12,null);
     //Product vmi1=new Product(110,"termek2","dafadf","adfadf2r",1230,12,null);
     private int whichActivity;
     //data
-    ShoppingList shoppingList;
+    ShoppingList shoppingList;      //0
 
     public ProductRecyclerAdapter(List<Product> allProduct, int activity){
         this.whichActivity=activity;
+
         this.products=allProduct;
     }
+    /*
+    public ProductRecyclerAdapter(ShoppingList shoppingList, int activity){
+        this.whichActivity=activity;
+        this.shoppingList=shoppingList;
+    }*/
     //lehet kell még egy konstrucktor?
 
     //shoppinglisté
     public ProductRecyclerAdapter(ShoppingList shoppingList){
         this.shoppingList=shoppingList;
     }
+
     @Override
     public ProductRecyclerAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Linear volt
@@ -59,8 +66,13 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
-                Product product=products.get(position);
-                holder.nameTextView.setText(product.getName());
+        if(whichActivity==1) {
+            Product product = products.get(position);
+            holder.nameTextView.setText(product.getName());
+        }
+        else{
+            Product product=shoppingList.getShoppingList()
+        }
                 //holder.priceTextView.setText(product.getPrice());
     }
 
