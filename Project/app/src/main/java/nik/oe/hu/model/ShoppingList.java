@@ -32,7 +32,7 @@ public class ShoppingList {
         }
     }
 
-    public void saveList(){
+    private void saveList(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.appcontext);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
