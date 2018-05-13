@@ -1,6 +1,7 @@
 package nik.oe.hu.vsa;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import  java.util.List;
 
 import java.util.List;
 
+import nik.oe.hu.mapservice.exceptions.AlreadyInShoppingListException;
+import nik.oe.hu.mapservice.exceptions.NoSuchItemInShoppingListException;
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
 import nik.oe.hu.model.ShoppingList;
@@ -71,12 +74,22 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
 
     public void removeItem(Product product,int position){
-        shoppingList.removeProduct(product);
+        try {
+            shoppingList.removeProduct(product);
+        } catch (NoSuchItemInShoppingListException e) {
+            e.printStackTrace();
+            Log.e("SLE",e.getMessage());
+        }
         notifyItemRemoved(position);
     }
 
     public void restore(Product product, int position){
-        shoppingList.addProduct(product);
+        try {
+            shoppingList.addProduct(product);
+        } catch (AlreadyInShoppingListException e) {
+            e.printStackTrace();
+            Log.e("SLE",e.getMessage());
+        }
         notifyItemInserted(position);
     }
 

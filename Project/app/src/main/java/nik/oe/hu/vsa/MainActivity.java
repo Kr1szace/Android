@@ -22,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -73,8 +74,9 @@ public class MainActivity extends AppCompatActivity
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         //shoppinglist==null ?
-        if (shoppingList.getShoppingList()==null) {
+        if (shoppingList.getShoppingList().isEmpty()) {
          //Üres a bevásárló listád üzi
+            Toast.makeText(this, "A bevásárlólista üres", Toast.LENGTH_LONG);
         }
         else {
             ProductRecyclerAdapter shoppinglistAdapter = new ProductRecyclerAdapter(shoppingList.getShoppingList(), 0);
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity
             recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
             recyclerView.setAdapter(shoppinglistAdapter);
         }
-
 
         //ShoppingListHandler();
 

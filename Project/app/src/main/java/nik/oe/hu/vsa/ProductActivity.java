@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.squareup.picasso.Picasso;
 
+import nik.oe.hu.mapservice.exceptions.AlreadyInShoppingListException;
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
 
@@ -21,6 +22,7 @@ import nik.oe.hu.model.ShoppingList;
 //Csuba
 import com.google.android.gms.common.api.CommonStatusCodes;
 import android.content.Intent;
+import android.widget.Toast;
 //váge
 
 
@@ -67,9 +69,14 @@ public class ProductActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shoppingList.addProduct(product);
-                Snackbar.make(view, "Hozzáadva a bevásárlólistához", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                try {
+                    shoppingList.addProduct(product);
+                    Snackbar.make(view, "Hozzáadva a bevásárlólistához", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                } catch (AlreadyInShoppingListException e) {
+                    Toast.makeText(ProductActivity.this, e.getMessage(), Toast.LENGTH_LONG);
+                }
+
             }
         });
 
