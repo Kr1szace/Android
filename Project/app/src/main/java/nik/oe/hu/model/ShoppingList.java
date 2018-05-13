@@ -68,6 +68,12 @@ public class ShoppingList {
         }
     }
 
+    public void removeAllProcuct(){
+        getShoppingList();
+        this.productsToBuy.clear();
+        this.saveList();
+    }
+
     public List<Product> getShoppingList(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(appcontext);
         Gson gson = new Gson();
