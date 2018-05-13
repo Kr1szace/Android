@@ -74,7 +74,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
             holder.nameTextView.setText(product.getName());
         }
         else {
-            Product product = (Product) shoppingList.getShoppingList();
+            Product product = (Product) shoppingList.getShoppingList().get(position);
         }
                 //holder.priceTextView.setText(product.getPrice());
     }
