@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 
 public class ShoppingList {
-    private ArrayList<Product> productsToBuy ;
+    private List<Product> productsToBuy ;
     private Context appcontext;
     public ShoppingList(Context context) {
         this.appcontext = context;
@@ -55,7 +56,7 @@ public class ShoppingList {
         this.saveList();
     }
 
-    public ArrayList<Product> getShoppingList(){
+    public List<Product> getShoppingList(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(appcontext);
         Gson gson = new Gson();
         String json = prefs.getString("shoppinglist", null);
