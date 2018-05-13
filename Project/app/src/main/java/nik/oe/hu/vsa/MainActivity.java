@@ -192,8 +192,6 @@ public class MainActivity extends AppCompatActivity
             //ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, 1600);
             Intent intent = new Intent(this, CameraActivityMain.class);
             startActivity(intent);
-
-
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(this, ProductListActivity.class);
             startActivity(intent);
