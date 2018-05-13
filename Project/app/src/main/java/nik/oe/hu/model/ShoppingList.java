@@ -31,6 +31,7 @@ public class ShoppingList {
         if (getShoppingList().isEmpty()){
             this.productsToBuy = new ArrayList<>();
             this.saveList();
+            getShoppingList();
         }else{
             this.productsToBuy = this.getShoppingList();
         }
@@ -46,20 +47,25 @@ public class ShoppingList {
     }
 
     public void addProduct(Product product) throws AlreadyInShoppingListException {
+        getShoppingList();
         if (!productsToBuy.contains(product)) {
             this.productsToBuy.add(product);
             this.saveList();
-        }else
-        throw new AlreadyInShoppingListException(product);
-
+            getShoppingList();
+        }else {
+            throw new AlreadyInShoppingListException(product);
+        }
     }
 
     public void removeProduct(Product product) throws NoSuchItemInShoppingListException {
+        getShoppingList();
         if (productsToBuy.contains(product)){
             this.productsToBuy.remove(product);
             this.saveList();
-        }else
-        throw new NoSuchItemInShoppingListException(product);
+            getShoppingList();
+        }else{
+            throw new NoSuchItemInShoppingListException(product);
+        }
     }
 
     public List<Product> getShoppingList(){
