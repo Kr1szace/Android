@@ -28,7 +28,7 @@ public class ShoppingList {
     }
 
     private void initList(){
-        if (getShoppingList() == null){
+        if (getShoppingList().isEmpty()){
             this.productsToBuy = new ArrayList<>();
             this.saveList();
         }else{

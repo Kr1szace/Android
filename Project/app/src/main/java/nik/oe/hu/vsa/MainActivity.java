@@ -28,6 +28,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import nik.oe.hu.mapservice.exceptions.AlreadyInShoppingListException;
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
 import nik.oe.hu.model.ShoppingList;
@@ -65,10 +66,13 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        this.createFakeInstances();
+
 
         //bevásárló lista része---------------------------------------------------------------------
        shoppingList=new ShoppingList(this);
+
+        //this.createFakeInstances();
+
         productAdapter=new ProductRecyclerAdapter(shoppingList);
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -201,6 +205,11 @@ public class MainActivity extends AppCompatActivity
         prod1.setImage_url("https://secure.ce-tescoassets.com/assets/HU/955/211955/ShotType1_328x328.jpg");
         prod.add(prod1);
 
+        try {
+            shoppingList.addProduct(prod1);
+        } catch (AlreadyInShoppingListException e) {
+            e.printStackTrace();
+        }
 
         Product prod2=new Product();
         prod2.setName("Császár zsömle");
