@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import nik.oe.hu.model.AppDatabase;
 import nik.oe.hu.model.Product;
+import nik.oe.hu.model.ShoppingList;
 
 /**
  * Created by Attila on 4/15/2018.
@@ -27,13 +29,18 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     //Product vmi1=new Product(110,"termek2","dafadf","adfadf2r",1230,12,null);
     private int whichActivity;
     //data
-
+    ShoppingList shoppingList;
 
     public ProductRecyclerAdapter(List<Product> allProduct, int activity){
         this.whichActivity=activity;
         this.products=allProduct;
     }
+    //lehet kell még egy konstrucktor?
 
+    //shoppinglisté
+    public ProductRecyclerAdapter(ShoppingList shoppingList){
+        this.shoppingList=shoppingList;
+    }
     @Override
     public ProductRecyclerAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Linear volt
@@ -63,14 +70,29 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
     }
 
 
+    public void removeItem(Product product,int position){
+        shoppingList.removeProduct(product);
+        notifyItemRemoved(position);
+    }
+
+    public void restore(Product product, int position){
+        shoppingList.addProduct(product);
+        notifyItemInserted(position);
+    }
+
     public static class ProductViewHolder extends RecyclerView.ViewHolder{
 
         public TextView nameTextView, priceTextView;
+
+        public RelativeLayout viewBackground, viewForeground;
 
         public ProductViewHolder(View productListView) {
             super(productListView);
             nameTextView=productListView.findViewById(R.id.product_name);
             //priceTextView=productListView.findViewById(R.id.product_price);
+            //lehet szét fog esni
+            viewBackground=productListView.findViewById(R.id.view_background);
+            viewForeground=productListView.findViewById(R.id.view_foreground);
         }
     }
 }

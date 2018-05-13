@@ -62,4 +62,6 @@ public class ShoppingList {
         Type type = new TypeToken<ArrayList<Product>>() {}.getType();
         return gson.fromJson(json, type);
     }
+
+
 }

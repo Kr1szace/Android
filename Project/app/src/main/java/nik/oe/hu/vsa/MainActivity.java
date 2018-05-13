@@ -1,6 +1,7 @@
 package nik.oe.hu.vsa;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -29,10 +30,11 @@ import nik.oe.hu.model.Product;
 import nik.oe.hu.model.ShoppingList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,RecyclerItemTouchHelperListener.RecyclerItemTouchHelperListener {
 
     private RecyclerView recyclerView;
     public ShoppingList shoppingList;
+    public ProductRecyclerAdapter productAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity
 
         //bevásárló lista része---------------------------------------------------------------------
         shoppingList=new ShoppingList(this);
+        productAdapter=new ProductRecyclerAdapter(shoppingList);
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -186,6 +189,18 @@ public class MainActivity extends AppCompatActivity
         //AppDatabase.getAppDatabase(this).productDAO().getAllProduct();
 
         return prod;
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (viewHolder instanceof ProductRecyclerAdapter.ProductViewHolder){
+            //String name= shoppingList.getShoppingList(viewHolder.getAdapterPosition()).
+            //final ClipData.Item deletedItem = shoppingList.getShoppingList(viewHolder.getAdapterPosition());
+            //final int deletedIndex = viewHolder.getAdapterPosition();
+
+            //itt kéne ezt a szart törölni!!
+            
+        }
     }
 }
 

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorProductName">#222222</color>
     <color name="colorProductPrice">#999999</color>
+    <color name="bg_row_background">#fa315b</color>
 </resources>
