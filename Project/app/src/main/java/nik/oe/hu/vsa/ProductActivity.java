@@ -65,7 +65,7 @@ public class ProductActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         shoppingList=new ShoppingList(this);
 
-        deafult = new Product(1,"Kifli","Finom, tápláló péksütemény","599123456894",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
+        deafult = new Product(1,"Kifli","Finom, tápláló péksütemény","268",15,100,"http://m.blog.hu/li/lifeadvice/image/gasztro/kifli.jpg");
 
 
         if (getIntent().getExtras() != null) {

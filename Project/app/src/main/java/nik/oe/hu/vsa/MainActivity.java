@@ -253,6 +253,18 @@ public class MainActivity extends AppCompatActivity
             AppDatabase.getAppDatabase(this).productDAO().Insert(szorp);
         //AppDatabase.getAppDatabase(this).productDAO().getAllProduct();
 
+        Product kigyoubi=new Product();
+        kigyoubi.setName("Kigyó uborka");
+        kigyoubi.setDescription("Az uborka egy kiváló zöldség. Ugyan igazán karakteres ízzel nem büszkélkedhet, mégis érdemes gyakran fogyasztani belőle: amellett, hogy az ára sem túl borsos, magas víztartalmának köszönhetően a szervezetre kiválóan hat, ráadásul gyönyörű lesz tőle a bőr. Nem is hinnéd, mennyire...");
+        kigyoubi.setBarcode("83");
+        kigyoubi.setPrice(198);
+        kigyoubi.setAmount(123);
+        kigyoubi.setImage_url("http://static.origos.hu/s/img/i/1403/20140322az-uborka-is-szuperzoldseg-1.jpg?w=993&h=662");
+
+        if (AppDatabase.getAppDatabase(this).productDAO().getProductsByName("Kigyó uborka").size() < 1)
+            AppDatabase.getAppDatabase(this).productDAO().Insert(kigyoubi);
+
+
         return prod;
     }
 
