@@ -11,9 +11,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import nik.oe.hu.mapservice.exceptions.AlreadyInShoppingListException;
+import nik.oe.hu.mapservice.exceptions.NoSuchItemInShoppingListException;
+
 
 /**
- * Created by Haku on 2018. 05. 11..
+ * Created by Haku on 2018. 05. 11..x
  */
 
 public class ShoppingList {
@@ -42,18 +45,21 @@ public class ShoppingList {
         editor.apply();     // This line is IMPORTANT !!!
     }
 
-    public void addProduct(Product product){
-        if (!productsToBuy.contains(product))
+    public void addProduct(Product product) throws AlreadyInShoppingListException {
+        if (!productsToBuy.contains(product)) {
             this.productsToBuy.add(product);
+            this.saveList();
+        }else
+        throw new AlreadyInShoppingListException(product);
 
-        this.saveList();
     }
 
-    public void removeProduct(Product product){
-        if (productsToBuy.contains(product))
+    public void removeProduct(Product product) throws NoSuchItemInShoppingListException {
+        if (productsToBuy.contains(product)){
             this.productsToBuy.remove(product);
-
-        this.saveList();
+            this.saveList();
+        }else
+        throw new NoSuchItemInShoppingListException(product);
     }
 
     public List<Product> getShoppingList(){
@@ -61,7 +67,8 @@ public class ShoppingList {
         Gson gson = new Gson();
         String json = prefs.getString("shoppinglist", null);
         Type type = new TypeToken<ArrayList<Product>>() {}.getType();
-        return gson.fromJson(json, type);
+        productsToBuy = gson.fromJson(json, type);
+        return productsToBuy;
     }
 
 
