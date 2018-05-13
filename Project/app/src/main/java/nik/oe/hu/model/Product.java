@@ -81,6 +81,16 @@ public class Product implements Parcelable{
         }
     };
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId() == ((Product)obj).getId();
+    }
+
     public int getId() {
         return id;
     }

@@ -10,7 +10,7 @@ public class NotAllowedShoppingListActionException extends Exception {
 
     Product product;
 
-    public NotAllowedShoppingListActionException(Product productct) {
+    public NotAllowedShoppingListActionException(Product product) {
         this.product = product;
     }
 }
