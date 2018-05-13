@@ -72,6 +72,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
         if(whichActivity==1) {
             Product product = products.get(position);
             holder.nameTextView.setText(product.getName());
+            //holder.priceTextView.setText(product.getPrice());
         }
         else {
             Product product = (Product) shoppingList.getShoppingList().get(position);
@@ -120,10 +121,11 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecycler
 
             if(whichActivity==1) {
                 nameTextView = productListView.findViewById(R.id.product_name);
-                //priceTextView=productListView.findViewById(R.id.product_price);
+                priceTextView=productListView.findViewById(R.id.product_price);
             }
             else {
                 nameTextView=productListView.findViewById(R.id.product_item_name);
+                priceTextView=productListView.findViewById(R.id.product_price);
                 viewBackground = productListView.findViewById(R.id.view_background);
                 viewForeground = productListView.findViewById(R.id.view_foreground);
             }
