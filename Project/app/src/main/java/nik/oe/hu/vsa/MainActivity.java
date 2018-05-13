@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -30,11 +32,12 @@ import nik.oe.hu.model.Product;
 import nik.oe.hu.model.ShoppingList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,RecyclerItemTouchHelperListener.RecyclerItemTouchHelperListener {
+        implements NavigationView.OnNavigationItemSelectedListener,RecyclerItemTouchHelperListener.RecyclerItemTouchHelperListenerInterface {
 
     private RecyclerView recyclerView;
     public ShoppingList shoppingList;
     public ProductRecyclerAdapter productAdapter;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,16 +194,27 @@ public class MainActivity extends AppCompatActivity
         return prod;
     }
 
+
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
-        if (viewHolder instanceof ProductRecyclerAdapter.ProductViewHolder){
-            //String name= shoppingList.getShoppingList(viewHolder.getAdapterPosition()).
-            //final ClipData.Item deletedItem = shoppingList.getShoppingList(viewHolder.getAdapterPosition());
-            //final int deletedIndex = viewHolder.getAdapterPosition();
 
-            //itt kéne ezt a szart törölni!!
-            
-        }
+        //pozició alapján(int position) adott product eltávolítása a bevásárlólistából
+        Product product=shoppingList.getShoppingList().get(position);
+
+        productAdapter.removeItem(product,position);
+
+        //UNDO opció
+        Snackbar snackbar = Snackbar.make(coordinatorLayout,"eltávolítva a kosárból",Snackbar.LENGTH_LONG );
+        snackbar.setAction("UNDO", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //adott product adott helyre visszatétele
+                //productAdapter.restore();
+            }
+        });
+
+        snackbar.setActionTextColor(Color.BLUE);
+        snackbar.show();
     }
 }
 

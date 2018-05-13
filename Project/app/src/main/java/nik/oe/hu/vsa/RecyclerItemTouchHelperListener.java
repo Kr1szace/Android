@@ -59,7 +59,7 @@ public class RecyclerItemTouchHelperListener extends ItemTouchHelper.SimpleCallb
                 actionState, isCurrentlyActive);
     }
 
-    public void onSwiped(ProductRecyclerAdapter.ProductViewHolder viewHolder, int direction) {
+    public void onSwiped(ProductRecyclerAdapter.ProductViewHolder viewHolder, int i, int direction) {
         listener.onSwiped(viewHolder, direction,viewHolder.getAdapterPosition());
     }
 
@@ -70,7 +70,7 @@ public class RecyclerItemTouchHelperListener extends ItemTouchHelper.SimpleCallb
     }
 
 
-    public interface RecyclerItemTouchHelperListener {
+    public interface RecyclerItemTouchHelperListenerInterface {
         void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position);
     }
 }
