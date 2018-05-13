@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "428142414064",
+    "firebase_url": "https://oe-android-lidl.firebaseio.com",
+    "project_id": "oe-android-lidl",
+    "storage_bucket": "oe-android-lidl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428142414064:android:a7628d98f16bdf45",
+        "android_client_info": {
+          "package_name": "nik.oe.hu.vsa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428142414064-fem36frru9ndruoums8rb6l4h4ps9o55.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nik.oe.hu.vsa",
+            "certificate_hash": "538bf84399ae914ed76c96cdff09640fbdb8893a"
+          }
+        },
+        {
+          "client_id": "428142414064-uobar984gf1pk4imotc7aeg38otv8tha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCjXwgxd4xQqjUryvuo28yKPeByzV-5Pc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428142414064-uobar984gf1pk4imotc7aeg38otv8tha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
