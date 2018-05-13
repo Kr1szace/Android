@@ -1,5 +1,6 @@
 package nik.oe.hu.vsa;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.List;
 
 import nik.oe.hu.mapservice.exceptions.AlreadyInShoppingListException;
 import nik.oe.hu.mapservice.exceptions.NoSuchItemInShoppingListException;
@@ -21,8 +24,15 @@ public class ShoppingListRecyclerAdapter extends RecyclerView.Adapter<ShoppingLi
 
     private ShoppingList shoppingList;
 
-    public ShoppingListRecyclerAdapter(ShoppingList shoppingList) {
-        this.shoppingList=shoppingList;
+    private List<Product> products;
+
+    public ShoppingListRecyclerAdapter(Context context) {
+        this.shoppingList= new ShoppingList(context);
+        this.products = shoppingList.getShoppingList();
+    }
+
+    public ShoppingListRecyclerAdapter(List<Product> products) {
+        this.products = products;
     }
 
     @Override
@@ -35,13 +45,13 @@ public class ShoppingListRecyclerAdapter extends RecyclerView.Adapter<ShoppingLi
 
     @Override
     public void onBindViewHolder(ShoppingViewHolder holder, int position) {
-            final Product product=shoppingList.getShoppingList().get(position);
+            final Product product=products.get(position);
             holder.nameTextView.setText(product.getName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return products != null ? products.size():0;
     }
 
     public void removeItem(Product product, int position){

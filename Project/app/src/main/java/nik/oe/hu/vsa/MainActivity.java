@@ -73,8 +73,12 @@ public class MainActivity extends AppCompatActivity
         //bevásárló lista része---------------------------------------------------------------------
 
        shoppingList=new ShoppingList(this);
+       List<Product> habi = shoppingList.getShoppingList().subList(1,shoppingList.getShoppingList().size());
 
-       shoppingListRecyclerAdapter=new ShoppingListRecyclerAdapter(shoppingList);
+        //List<Product> habi = AppDatabase.getAppDatabase(this).productDAO().getAllProduct();
+
+        //shoppingListRecyclerAdapter=new ShoppingListRecyclerAdapter(this);
+        shoppingListRecyclerAdapter = new ShoppingListRecyclerAdapter(habi);
 
         LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

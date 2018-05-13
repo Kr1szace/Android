@@ -18,6 +18,7 @@
         android:textSize="16dp"
         android:textStyle="bold"
         />
+
     <TextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
